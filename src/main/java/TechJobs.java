@@ -26,7 +26,7 @@ public class TechJobs {
         actionChoices.put("list", "List");
 
         System.out.println("Welcome to LaunchCode's TechJobs App!");
-
+        System.out.println();
         // Allow the user to search until they manually quit
         while (true) {
 
@@ -43,8 +43,8 @@ public class TechJobs {
                 } else {
 
                     ArrayList<String> results = JobData.findAll(columnChoice);
-
-                    System.out.println("\n*** All " + columnChoices.get(columnChoice) + " Values ***");
+                    System.out.println();
+                    System.out.println("*** All " + columnChoices.get(columnChoice) + " Values ***");
 
                     // Print list of skills, employers, etc
                     for (String item : results) {
@@ -55,12 +55,13 @@ public class TechJobs {
             } else { // choice is "search"
 
                 // How does the user want to search (e.g. by skill or employer)
+                System.out.println();
                 String searchField = getUserSelection("Search by:", columnChoices);
 
                 // What is their search term?
                 System.out.println("\nSearch term:");
                 String searchTerm = in.nextLine();
-
+                //System.out.println(searchTerm);
                 if (searchField.equals("all")) {
                     printJobs(JobData.findByValue(searchTerm));
                 } else {
@@ -87,7 +88,7 @@ public class TechJobs {
 
         do {
 
-            System.out.println("\n" + menuHeader);
+            System.out.println(  menuHeader);
 
             // Print available choices
             for (int j = 0; j < choiceKeys.length; j++) {
@@ -119,7 +120,18 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        for (HashMap<String,String>job:someJobs) {
+            System.out.println();
+            System.out.println("*****");
+            for (Map.Entry<String, String> jobdetail : job.entrySet()) {
+                System.out.println(jobdetail.getKey() + ": " + jobdetail.getValue() );
 
-        System.out.println("printJobs is not implemented yet");
+            }
+            System.out.println("*****");
+        }
+        if (someJobs.isEmpty()){
+            System.out.println("No Results");}
+        else{
+        System.out.println();}
     }
 }
