@@ -97,6 +97,7 @@ public class JobData {
         loadData();
         //System.out.println(value);
         // TODO - implement this method
+
         ArrayList<HashMap<String, String>> searchJobs = new ArrayList<>();
         value.toLowerCase();
         System.out.println(value);
